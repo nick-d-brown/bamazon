@@ -1,11 +1,10 @@
-# bamazon
-A basic Storefront that uses Node.js and MySQL.
+
 
 
 <!-- This is a basic template for ReadMe files -->
 
-# Title
-
+# bamazon
+A basic Storefront that uses Node.js and MySQL.
   
 
 ## :mag: Table of contents :mag:
@@ -23,14 +22,18 @@ A basic Storefront that uses Node.js and MySQL.
 
 ### 1-Description :page\_facing\_up:
 
-This is a description of a project that I have completed that focuses on a specific technology with other supporting technologies that I have already learned. This description should give you a good idea of what the project does in plan, design and implementation. How does it help improve the user's life? What is the overall purpose of the work? If I were to leave the project today what would people need to know about the idea in order to maintain the project
+This Node.js application allows the user to interact with a basic product storefront. Upon starting up the bamazonCustomer.js file using node the user will be asked whether they would like to make a purchase. If no, the application exits the store. If yes, the user is asked to enter a product id (from the provided product table) that they would like to purchase. They then must enter a quatity to purchase. 
 
-> **Note:** Below is an image of the landing page for the project.
+Upon entering this data the application will first determine whether there is enough product in stock to complete the order. If no, it then re-prompts the user to place a new order (this time with an acceptable quantity). If yes, then the order is placed and the total the user owes is totaled. All of the information is displayed to the user. The table is then re-displayed with updated quantities and the user is again asked whether they would like to make a purchase.
+
+This app is meant to showcase the ability to interact with a server using MySQL and to utilize Node.js as the medium to interact/dislay the content. 
+
+> **Note:** Below is a gif of the working project.
 
 
 
 
-![Book image](https://github.com/nick-d-brown/Basic-Portfolio-html_css/blob/master/images/2-sanddunes.jpg?raw=true)
+![Book image](https://github.com/nick-d-brown/bamazon)
 
 
 ---
@@ -42,35 +45,14 @@ This is a description of a project that I have completed that focuses on a speci
   > **Note: Delete this note and the following technologies that do not apply.**
 
 
-- HTML
-- CSS
+
 - Vanilla JavaScript
-- [jQuery](https://jquery.com/)
-- [Twitter Bootstrap](https://getbootstrap.com/)
-- [Google Materialize](http://materializecss.com/)
-- [Animate.css](https://daneden.github.io/animate.css/)
-- [Greensock.js](https://greensock.com/)
-- [Moment.js](https://momentjs.com/)
-- [Google Firebase](https://firebase.google.com/)
-- [React.js](https://reactjs.org/)
 - [Node.js](https://nodejs.org/en/)
--- Security and Session Storage
--- User Authentication
--- Express
-- AJAX
-- Web APIs
-- [Google Fonts](https://fonts.google.com/)
-- Responsive Design
-- SASS
-- LESS
-- GRUNT
-- GULP
-- Handlebars
-- Cookies, Local Storage
-- [Heroku](https://www.heroku.com/)
-- Laravel
-- MySQL
-- MongoDB
+- [NPM colors](https://www.npmjs.com/package/colors)
+- [NPM dotenv](https://www.npmjs.com/package/dotenv)
+- [NPM inquirer](https://www.npmjs.com/package/inquirer)
+- [NPM cli-table](https://www.npmjs.com/package/cli-table)
+- [MySQL](https://www.mysql.com/npm color)
 
 ---
 
@@ -78,13 +60,19 @@ This is a description of a project that I have completed that focuses on a speci
 
 > **Note:** This section is meant for beginners an idea of what the *crux* technology was for this project. Ideally by seeing this first they will be able tackle the hard problem first to start the learning/absorption process as soon as possible.
 
-Throughout this project there was only one challenge the proved to be tricky to handle, ___________________. ________ was a new technology to take on and after spending a good amount of time in the documentation I started to grasp it. My advice would be start early. Use the links listed below to learn more about the technology and remember **you will eventually learn how everything works!**
+The main chllenges encountered with this project were interacting with my server using MySQL and determining the proper functional logic to use in my inquirer prompts. 
+
+I first tackled the issue of using CRUD operations in the JavaScript logic to manipulate the server data. I order to do this though, I first had to learn how to properly structure my Data Types using proper syntax in my Database tables. To learn these data types I used the MySQL Data Types link that is provided below. I then used the second link to learn more about CRUD operations. This was mainly a start though, I utilized the Udemy course on MySQL by Colt Steele and other resources to build my knowledge. Research is your friend. 
+
+After building my knowledge of these two things the rest of the project was simply doing my best to keep things simple. I found myself overcomplicating the logic from time to time. 
+
+Use the links listed below to learn more about the technology and remember **you will eventually learn how everything works!**
 
 ---**Suggested Links**---
 
--[Link1]()
--[Link1]()
--[Link1]()
+-[MySQL Data Types](https://dev.mysql.com/doc/refman/5.7/en/data-type-overview.html)
+-[MySQL CRUD Operations](https://www.nodejsera.com/nodejs-tutorial-day17-crud-in-mysql.html)
+-[Colt Steele MySQL Course](https://www.udemy.com/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/)
 -[Link1]()
 
 ### 4-Issues :question::exclamation:
@@ -97,11 +85,12 @@ Throughout this project there was only one challenge the proved to be tricky to 
 
   Below is a list of possible features that we would like to add to the project. If You would like to propose a feature to add please feel free to create a PR to add it to the list. **We love it when others can help propose ideas!**
 
-1.	idea1
-2.	idea2
-3.	idea3
-4.	idea4
-5.	idea5
+1.	Manager View that allows user to:
+    - add new products 
+    - add inventory
+    - list products that are for sale
+    - check low inventory
+2.	Supervisor View
 
 ### 6-Contributors :raised_hands:
 
