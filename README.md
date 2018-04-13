@@ -11,12 +11,12 @@ A basic Storefront that uses Node.js and MySQL.
 
   
 
-### [1-Description](https://github.com/nick-d-brown/RepoName#Description)
-### [2-Technologies](https://github.com/nick-d-brown/RepoName#Technologies)
-### [3-Challenges](https://github.com/nick-d-brown/RepoName#Challenges)
-### [4-Issues](https://github.com/nick-d-brown/RepoName#Issues)
-### [5-Desired Features](https://github.com/nick-d-brown/RepoName#Desired-Features)
-### [6-Contributors](https://github.com/nick-d-brown/RepoName#Contributors)
+### [1-Description](https://github.com/nick-d-brown/bamazon#1-description-page_facing_up)
+### [2-Technologies](https://github.com/nick-d-brown/bamazon#2-technologies--computer)
+### [3-Challenges](https://github.com/nick-d-brown/bamazon#3-challenges-screamboom)
+### [4-Issues](https://github.com/nick-d-brown/bamazon#4-issues-questionexclamation)
+### [5-Desired Features](https://github.com/nick-d-brown/bamazon#5-desired-features-star2)
+### [6-Contributors](https://github.com/nick-d-brown/bamazon#6-contributors-raised_hands)
 
  ---
 
@@ -33,7 +33,7 @@ This app is meant to showcase the ability to interact with a server using MySQL 
 
 
 
-![Book image](https://github.com/nick-d-brown/bamazon)
+![App Showcase](https://github.com/nick-d-brown/bamazon/blob/master/assets/bamazonCapture1.gif)
 
 
 ---
@@ -70,10 +70,10 @@ Use the links listed below to learn more about the technology and remember **you
 
 ---**Suggested Links**---
 
--[MySQL Data Types](https://dev.mysql.com/doc/refman/5.7/en/data-type-overview.html)
--[MySQL CRUD Operations](https://www.nodejsera.com/nodejs-tutorial-day17-crud-in-mysql.html)
--[Colt Steele MySQL Course](https://www.udemy.com/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/)
--[Link1]()
+- [MySQL Data Types](https://dev.mysql.com/doc/refman/5.7/en/data-type-overview.html)
+- [MySQL CRUD Operations](https://www.nodejsera.com/nodejs-tutorial-day17-crud-in-mysql.html)
+- [Colt Steele MySQL Course](https://www.udemy.com/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/)
+- [Link1]()
 
 ### 4-Issues :question::exclamation:
 
