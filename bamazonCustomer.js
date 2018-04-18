@@ -4,6 +4,7 @@ var mysql = require('mysql');
 var inquirer = require('inquirer');
 var Table = require('cli-table');
 var colors = require('colors');
+var figlet = require('figlet');
 
 
 var crudOps = {
@@ -22,9 +23,9 @@ var crudOps = {
             //     console.log(" | " + res[i].item_id + " | " + res[i].product_name + " | $" + res[i].Price + " | ");
             // }
             
-            var table = new Table({ head: ['Item Id', 'Item Name', 'Item Price', 'Quantity in Stock'] });
+            var table = new Table({ head: ['Item Id', 'Item Name', 'Item Price'] });
             for (let i = 0; i < res.length; i++){
-                table.push([res[i].item_id, res[i].product_name, "$"+res[i].price.toFixed(2), res[i].stock_quantity]);
+                table.push([res[i].item_id, res[i].product_name, "$"+res[i].price.toFixed(2)]);
             };
             console.log(table.toString());
             userActions.continueBuy();
@@ -140,8 +141,8 @@ var userActions = {
                     // console.log(res[0].stock_quantity);
                     // console.log(userActions.itemTotal);
                     
-                    userActions.updateQuantity = (parseFloat(res[0].stock_quantity) - parseFloat(userActions.itemTotal));
-                    userActions.totalOwed = (parseFloat(res[0].price) * parseFloat(userActions.itemTotal));
+                    userActions.updateQuantity = (res[0].stock_quantity - parseInt(userActions.itemTotal));
+                    userActions.totalOwed = (parseFloat(res[0].price) * parseInt(userActions.itemTotal));
                     // console.log("updated quantity"+userActions.updateQuantity);
                     crudOps.update();
                 }
@@ -169,6 +170,19 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId + "\n");
-    crudOps.read();    
+    figlet(' Welcome \n     to      \n Bamazon!! \n', {
+        font: 'Big Money-nw',
+        horizontalLayout: 'fitted',
+        verticalLayout: 'fitted'
+    }, function (err, data) {
+        if (err) {
+            console.log('Something went wrong...');
+            console.dir(err);
+            return;
+        }
+        console.log(data);
+        crudOps.read();
+    });
+        
 });
 

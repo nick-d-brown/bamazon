@@ -52,7 +52,7 @@ This app is meant to showcase the ability to interact with a server using MySQL 
 - [NPM dotenv](https://www.npmjs.com/package/dotenv)
 - [NPM inquirer](https://www.npmjs.com/package/inquirer)
 - [NPM cli-table](https://www.npmjs.com/package/cli-table)
-- [MySQL](https://www.mysql.com/npm color)
+- [MySQL](https://www.mysql.com/npm)
 
 ---
 
@@ -73,7 +73,6 @@ Use the links listed below to learn more about the technology and remember **you
 - [MySQL Data Types](https://dev.mysql.com/doc/refman/5.7/en/data-type-overview.html)
 - [MySQL CRUD Operations](https://www.nodejsera.com/nodejs-tutorial-day17-crud-in-mysql.html)
 - [Colt Steele MySQL Course](https://www.udemy.com/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/)
-- [Link1]()
 
 ### 4-Issues :question::exclamation:
 
@@ -92,11 +91,15 @@ Use the links listed below to learn more about the technology and remember **you
     - check low inventory
 2.	Supervisor View
 
+---
+
 ### 6-Contributors :raised_hands:
 
 - [Nick Brown](https://github.com/nick-d-brown/)
 
 > **PS:** If you would like to contribute please contact Nick Brown on GitHub or at n.brown.professional@gmail.com. We welcome bot first time contributors and experienced developers with critical feedback. 
 
+---
 
 ## Thanks for visiting!
+### [Top of Page](https://github.com/nick-d-brown/bamazon#bamazon)

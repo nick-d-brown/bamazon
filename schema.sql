@@ -1,3 +1,11 @@
+-- This is the SQL code for the initial setup of the bamazon DB
+-- WARNING!!!!!!!
+--====================
+--DROP DATABASE bamazon;
+--====================
+-- The code Above is only run at the VERY BEGINNING of the project. It DELETES the database
+-- This is only meant to be used to clear out an existing DB before we begin our work
+
 CREATE DATABASE bamazon;
 
 --USE BAMAZON DATABASE
@@ -25,3 +33,4 @@ VALUES  ("Multi-colored Pen", "Office Supplies", 2.99, 300)
         , ("Computer Monitor", "Electronics", 270.49, 300)
         , ("Hiking Backpack", "Camping Supplies", 43.99, 250)
         , ("Hatchet", "Books", 8.99, 1000);
+
