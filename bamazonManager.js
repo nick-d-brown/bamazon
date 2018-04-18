@@ -1,5 +1,4 @@
 require('dotenv').config();
-// const db = require('db');
 var mysql = require('mysql');
 var inquirer = require('inquirer');
 var Table = require('cli-table');
@@ -21,30 +20,20 @@ var managerOps = {
             .then(function (managerRes) {
                 switch (managerRes.ManagerChoice) {
                     case "View Products for Sale":
-                        // console.log("View Products for Sale");
-                        managerOps.readAll();
-                        // connection.end();
-                        
+                        managerOps.readAll();                        
                         break;
                     case "View Low Inventory":
-                        console.log("View Low Inventory");
-                        managerOps.checkInv();
-                        // connection.end();
-                        
+                        managerOps.checkInv();                        
                         break;
                     case "Add to Inventory":
-                        console.log("Add to Inventory");
-                        managerOps.addInventory();
-                        // connection.end();
-                        
+                        managerOps.addInventory();                        
                         break;
                     case "Add New Product":
-                        console.log("Add New Product");
                         managerOps.addItemPrompt();
                         break;
                     case "Quit":
-                        console.log("Goodbye.");
-                       connection.end();
+                        console.log("Goodbye.".rainbow);
+                        connection.end();
                         break;
                 
                     default:
@@ -53,7 +42,7 @@ var managerOps = {
             });
     },
     readAll: function () {
-        console.log("Selecting all products available for sale...\n");
+        console.log("Selecting all products available for sale...\n".green);
         connection.query("SELECT * FROM products", function (err, res) {
             if (err) throw err;
             var table = new Table({ head: ['Item Id', 'Item Name', 'Item Price', 'Quantity'] });
@@ -63,10 +52,9 @@ var managerOps = {
             console.log(table.toString());
             managerOps.init();  
         });
-       
     },
     checkInv: function () {
-        console.log("Checking Items that have low inventory...\n");
+        console.log("Checking Items that have low inventory...\n".green);
         connection.query("SELECT * FROM products WHERE stock_quantity<5", function (err, res) {
             if (err) throw err;
             var lowInvTable = new Table({ head: ['Item Id', 'Item Name', 'Item Price', 'Quantity'] });
@@ -112,23 +100,18 @@ var managerOps = {
                 {
                     name: "confirmUpdateProduct",
                     type: "confirm",
-                    message: "Is all of the above information correct?"
+                    message: "Is all of the above information correct?".bold
                 }
             ])
             .then(function (answer) {
-                // console.log(answer);
                 if (answer.confirmUpdateProduct) {
                     managerActions.updateItem.id = answer.updateId;
                     managerActions.updateItem.quantity = answer.updateQuantity;
                     managerActions.update();
-                    // console log success
-                    console.log("SUCCESS! Your product has been updated.");
-                    // managerOps.readAll();
+                    console.log("SUCCESS! Your product has been updated.".green);
                     managerOps.init();
-
-                    // print new list of items
                 } else {
-                    console.log("Ok please re-enter the correct information.");
+                    console.log("Ok please re-enter the correct information.".red);
                     managerOps.addItemPrompt();
                 }
             })
@@ -173,53 +156,37 @@ var managerOps = {
                                 return true;
                             }
                         }
-
                         return false;
                     }
                 },
                 {
                     name: "confirmNewProduct",
                     type: "confirm",
-                    message: "Is all of the above information correct?"
+                    message: "Is all of the above information correct?".bold
                 }
             ])
-            .then(function (answer) {
-                // console.log(answer);
-                
+            .then(function (answer) {                
                 if (answer.confirmNewProduct) {
-                    // Set product values
                     managerActions.newItem.name = answer.newProductName;
                     managerActions.newItem.department = answer.newProductDept;
                     managerActions.newItem.price = answer.newProductPrice;
                     managerActions.newItem.quantity = answer.newProductQuantity;
-                    // managerActions.newItem.quantityConverted = managerActions.newItem.quantity.toFixed(0);
-
-                    // add a new product to the inventory
                     managerActions.insert();
-                    // console log success
-                    console.log("SUCCESS! Your product has been added.");
-                    // managerOps.readAll();
-                    managerOps.init();
-                    
-                    // print new list of items
+                    console.log("SUCCESS! Your product has been added.".green);
+                    managerOps.init();                    
                 } else {
-                    console.log("Ok please re-enter the correct information.");  
+                    console.log("Ok please re-enter the correct information.".red);  
                     managerOps.addItemPrompt();
                 }
-
             });
     }
-
-    
 };
-
 var managerActions = 
     {
         newItem: {
             name: "",
             department: "",
             price: null,
-            // quantityConverted: null,
             quantity: null
         },
         updateItem:{
@@ -236,7 +203,6 @@ var managerActions =
                 ],
                 function (err, res) {
                     if (err) throw err;
-                    
                 }
             );
         },
@@ -248,7 +214,6 @@ var managerActions =
                 ],
                 function (err, res) {
                     if (err) throw err;
-
                 }
         );
     }
@@ -272,7 +237,7 @@ var connection = mysql.createConnection({
 // begins the user db connection and starts process to allow transactions
 connection.connect(function (err) {
     if (err) throw err;
-    console.log("connected as id " + connection.threadId + "\n");
+    console.log(("connected as id " + connection.threadId + "\n").green);
     figlet('Manager\n Mode', {
         font: 'Big Money-nw',
         horizontalLayout: 'fitted',
@@ -286,6 +251,4 @@ connection.connect(function (err) {
         console.log(data);
         managerOps.init();
     });
-    
-    
 });

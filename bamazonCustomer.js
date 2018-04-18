@@ -1,5 +1,4 @@
 require('dotenv').config();
-// const db = require('db');
 var mysql = require('mysql');
 var inquirer = require('inquirer');
 var Table = require('cli-table');
@@ -12,24 +11,12 @@ var crudOps = {
         console.log("Selecting all products available for sale...\n");
         connection.query("SELECT * FROM products", function (err, res) {
             if (err) throw err;
-            // Log all results of the SELECT statement
-            // console.log(res); entire respons of the database
-            // connection.end(); ends the operation  --- may include back in 
-
-           
-            
-            // console.log(" | Item ID | Item Name | Item Price | ");
-            // for (let i = 0; i < res.length; i++){
-            //     console.log(" | " + res[i].item_id + " | " + res[i].product_name + " | $" + res[i].Price + " | ");
-            // }
-            
             var table = new Table({ head: ['Item Id', 'Item Name', 'Item Price'] });
             for (let i = 0; i < res.length; i++){
                 table.push([res[i].item_id, res[i].product_name, "$"+res[i].price.toFixed(2)]);
             };
             console.log(table.toString());
-            userActions.continueBuy();
-            
+            userActions.continueBuy();            
         });
     },
     update: function(){
@@ -45,13 +32,8 @@ var crudOps = {
           ]
         , function (err, res) {
             if (err) throw err;
-           // print the total of purchas
             console.log("The total owed is: " + colors.red.bold(userActions.totalOwed)+"\n");
-           
-           crudOps.read();
-        //    userActions.continueBuy();
-           
-            
+           crudOps.read();   
         });
     }
 }
@@ -70,16 +52,12 @@ var userActions = {
                 }
             )
             .then(function (answer) {
-                // console.log(answer);
-                
                 if (answer.continueBuy) {
                       userActions.initialBuy();
                } else {
                     console.log("OK, thank you for stopping by the Bamazon Storefront!\n".rainbow.bold);
-                   connection.end();
-                   
+                   connection.end(); 
                }
-
             });
     },
     initialBuy: function () {
@@ -109,10 +87,8 @@ var userActions = {
                 }
             ])
             .then(function (answer) {
-                //check to see if store has enough of product for customer
                 userActions.itemToFind = answer.purchaseID;
                 userActions.itemTotal = answer.purchaseTotal;
-                // console.log(userActions.itemToFind);
                 userActions.findItem();
                 
             });
@@ -124,33 +100,20 @@ var userActions = {
             },
             function (err, res) {
                 if (err) throw err;
-                // console.log(res);
-                // console.log(res[0].stock_quantity);
-                
-                // console.log(res[0].RowDataPacket.stock_quantity);
-                
-                // console.log(res.RowDataPacket.stock_quantity);
-
-                
                 if (res[0].stock_quantity < userActions.itemTotal || userActions.itemTotal===null) {
                     console.log("Sorry there is an insufficient quantity of product for that order. Please re-order.\n".red);
                     userActions.initialBuy();
                 }
                 else {
                     console.log("Your order has been processed.\n".green);
-                    // console.log(res[0].stock_quantity);
-                    // console.log(userActions.itemTotal);
-                    
                     userActions.updateQuantity = (res[0].stock_quantity - parseInt(userActions.itemTotal));
                     userActions.totalOwed = (parseFloat(res[0].price) * parseInt(userActions.itemTotal));
-                    // console.log("updated quantity"+userActions.updateQuantity);
                     crudOps.update();
                 }
             }
         );
     }
 } 
-
 // .env passkeys to the database
 var passKeys = {
     host: process.env.DB_HOST,

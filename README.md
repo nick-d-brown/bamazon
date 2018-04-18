@@ -26,14 +26,19 @@ This Node.js application allows the user to interact with a basic product storef
 
 Upon entering this data the application will first determine whether there is enough product in stock to complete the order. If no, it then re-prompts the user to place a new order (this time with an acceptable quantity). If yes, then the order is placed and the total the user owes is totaled. All of the information is displayed to the user. The table is then re-displayed with updated quantities and the user is again asked whether they would like to make a purchase.
 
+The user also has the ability to access bamazonManager.js. This side of the app allows the user to view all products (including their quantities), view only the products with low quantity(less than 5 products left), increase the quantity of a product, and add a new product.
+
 This app is meant to showcase the ability to interact with a server using MySQL and to utilize Node.js as the medium to interact/dislay the content. 
 
-> **Note:** Below is a gif of the working project.
+> **Note:** Below are three gifs to showcase the working project.
 
 
 
 
-![App Showcase](https://github.com/nick-d-brown/bamazon/blob/master/assets/bamazonCapture1.gif)
+![Customer View](https://github.com/nick-d-brown/bamazon/blob/master/assets/bamazonCustomer1.gif)
+![Manager View - Part 1](https://github.com/nick-d-brown/bamazon/blob/master/assets/bamazonManager1.gif)
+![Manager View - Part 1](https://github.com/nick-d-brown/bamazon/blob/master/assets/bamazonManager2.gif)
+
 
 
 ---
@@ -48,10 +53,11 @@ This app is meant to showcase the ability to interact with a server using MySQL 
 
 - Vanilla JavaScript
 - [Node.js](https://nodejs.org/en/)
-- [NPM colors](https://www.npmjs.com/package/colors)
-- [NPM dotenv](https://www.npmjs.com/package/dotenv)
-- [NPM inquirer](https://www.npmjs.com/package/inquirer)
-- [NPM cli-table](https://www.npmjs.com/package/cli-table)
+- [npm colors](https://www.npmjs.com/package/colors)
+- [npm dotenv](https://www.npmjs.com/package/dotenv)
+- [npm inquirer](https://www.npmjs.com/package/inquirer)
+- [npm cli-table](https://www.npmjs.com/package/cli-table)
+- [npm figlet](https://www.npmjs.com/package/figlet)
 - [MySQL](https://www.mysql.com/npm)
 
 ---
@@ -84,12 +90,20 @@ Use the links listed below to learn more about the technology and remember **you
 
   Below is a list of possible features that we would like to add to the project. If You would like to propose a feature to add please feel free to create a PR to add it to the list. **We love it when others can help propose ideas!**
 
-1.	Manager View that allows user to:
-    - add new products 
-    - add inventory
-    - list products that are for sale
-    - check low inventory
-2.	Supervisor View
+
+1.	Supervisor View
+  - Create a new MySQL table called departments. Your table should include the following columns.
+    - department_id
+    - department_name
+    - over_head_costs (A dummy number you set for each department)
+  - Modify the products table so that there's a product_sales column and modify the bamazonCustomer.js app so that this value is updated with each individual products total revenue from each sale.
+  - Modify your bamazonCustomer.js app so that when a customer purchases anything from the store, the price of the product multiplied by the quantity purchased is added to the product's product_sales column.
+  - Create another Node app called bamazonSupervisor.js. Running this application will list a set of menu options:
+    - View Product Sales by Department
+    - Create New Department
+  - When a supervisor selects View Product Sales by Department, the app should display a summarized table in their terminal/bash window. 
+  - The total_profit column should be calculated on the fly using the difference between over_head_costs and product_sales. total_profit should not be stored in any database. You should use a custom alias.
+  - f you can't get the table to display properly after a few hours, then feel free to go back and just add total_profit to the departments table.
 
 ---
 
